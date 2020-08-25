@@ -1,7 +1,7 @@
 <?php
 function is_username_valid($input)
 {
-    if(preg_match("/^[a-zA-Z]{5,9}$/", $input)) { return true; }
+    if(preg_match("/^\w{5,9}$/", $input)) { return true; }
     else { return false; }
 }
 function is_password_valid($input)
