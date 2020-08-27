@@ -3,10 +3,11 @@ function cetak_gambar($jumlah)
 {
     $char1 		 = '=';
     $char2 		 = '*';
-    if($jumlah % 2 != 0) // mod = sisabagi
+    if($jumlah % 2 != 0)
     { // Kondisi Ganjil
-        for ($row = 1; $row <= $jumlah; $row++) // Loop baris
-        {
+        $row = 0;
+        do {
+            $row++;
             for ($col = 1; $col <= $jumlah; $col++)  // Loop kolom
             {
                 if($row % 2 != 0) { $char = $col % 2 != 0 ? $char1 : $char2; }
@@ -14,12 +15,12 @@ function cetak_gambar($jumlah)
                 echo $char, " &ensp; ";	
             }
             echo "<br/><br/>";  // Space
-        }
+        } while ($row < $jumlah);
     } 
     else
     {
         echo "Jumlah Harus Ganjil !!";
     }
 }
-cetak_gambar(5);
+cetak_gambar(9);
 ?>

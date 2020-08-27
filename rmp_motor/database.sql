@@ -40,11 +40,11 @@ values
 -- insert motorcycle table 
 insert into motorcycle_tb (name, brand_id, image, color, specification, stock)
 values
-(1, 'Vario 110cc eSP', 1, 'https://static.wixstatic.com/media/116677_dddbecf26f2642d39b7db2b47a003cbb.png/v1/fill/w_455,h_445,al_c,q_95,usm_0.66_1.00_0.01/116677_dddbecf26f2642d39b7db2b47a003cbb.webp', 'Grande White', 'Tipe Kopling = Otomatis\r\nPanjang X Lebar X Tinggi = 1.888 x 679 x 1.091 mm\r\nKapasitas tangki bahan bakar = 3,7 liter', 5),
-(2, 'FREEGO S VERSION ABS', 2, 'https://www.yamaha-motor.co.id/uploads/products/2020010716032844774W85632.png', 'Blue Navy', 'Tipe Kopling = Otomatis,\r\nTipe Mesin = Air Cooled 4-Stroke,SOHC, \r\nDiameter x Langkah	52,4 x 57,9 mm', 7),
-(3, 'MIO S SMART & SOPHISTICATED', 2, 'https://www.yamaha-motor.co.id/uploads/products/tCpouemtB8EzqgRjVmQ7.png', 'Magnivicient Cyan', 'Tipe Kopling = Otomatis, LAMPU LED, ANSWER BACK SYSTEM, BAN TUBELESS DENGAN TAPAK LEBAR, MESIN BLUECORE 125 CC', 11),
-(4, 'NINJA 250SL', 4, 'https://content2.kawasaki.com/ContentStorage/KMI/Products/4895/f17c0a99-a087-422f-ae54-c4807afeccb9.jpg?w=800', 'Green', 'Tipe Kopling = Manual,\r\nJenis Mesin = Liquid-cooled, 4-stroke Single, Sistem Pengapian Digital', 4),
-(5, 'Satria F150', 3, 'https://suzukicdn.net/themes/default2019/img/motorcycle/all-new-satria-f150/main-blue.png', 'Matt Blue', 'Jenis Mesin = 4-tak, Liquid cooled,\r\nKapasitas Tangki = 4.0 liter,\r\nSistem Katup = DOHC 4-valve', 0);
+('Vario 110cc eSP', 1, 'https://static.wixstatic.com/media/116677_dddbecf26f2642d39b7db2b47a003cbb.png/v1/fill/w_455,h_445,al_c,q_95,usm_0.66_1.00_0.01/116677_dddbecf26f2642d39b7db2b47a003cbb.webp', 'Grande White', 'Tipe Kopling = Otomatis\r\nPanjang X Lebar X Tinggi = 1.888 x 679 x 1.091 mm\r\nKapasitas tangki bahan bakar = 3,7 liter', 5),
+('FREEGO S VERSION ABS', 2, 'https://www.yamaha-motor.co.id/uploads/products/2020010716032844774W85632.png', 'Blue Navy', 'Tipe Kopling = Otomatis,\r\nTipe Mesin = Air Cooled 4-Stroke,SOHC, \r\nDiameter x Langkah	52,4 x 57,9 mm', 7),
+('MIO S SMART & SOPHISTICATED', 2, 'https://www.yamaha-motor.co.id/uploads/products/tCpouemtB8EzqgRjVmQ7.png', 'Magnivicient Cyan', 'Tipe Kopling = Otomatis, LAMPU LED, ANSWER BACK SYSTEM, BAN TUBELESS DENGAN TAPAK LEBAR, MESIN BLUECORE 125 CC', 11),
+('NINJA 250SL', 4, 'https://content2.kawasaki.com/ContentStorage/KMI/Products/4895/f17c0a99-a087-422f-ae54-c4807afeccb9.jpg?w=800', 'Green', 'Tipe Kopling = Manual,\r\nJenis Mesin = Liquid-cooled, 4-stroke Single, Sistem Pengapian Digital', 4),
+('Satria F150', 3, 'https://suzukicdn.net/themes/default2019/img/motorcycle/all-new-satria-f150/main-blue.png', 'Matt Blue', 'Jenis Mesin = 4-tak, Liquid cooled,\r\nKapasitas Tangki = 4.0 liter,\r\nSistem Katup = DOHC 4-valve', 0);
 
 -- insert customer table 
 insert into customer_tb (name, address, phone, motorcycle_id)

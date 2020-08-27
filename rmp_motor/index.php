@@ -1,13 +1,17 @@
 <?php
+// Menghubungkan database
 $connection = mysqli_connect("localhost", "root", "", "rmp_motor") or die( "Unable to connect");
+
+// Membuat kondisional page dengan method $_GET | Ex : index.php?buy maka perintah dijalankan
 if(isset($_GET['buy']))
 {
-    
+    // Memastikan value dari form yang harus di isi tidak kosong
     if(!isset($_POST["name"]) || !isset($_POST["address"]) || !isset($_POST["phone"])){
         echo "<script>alert('Error : Fill The Form Exactly ....'); javascript:location.replace('index.php');</script>";
     }
     else
     {
+        // Insert data pembeli dan mengurangi stock product
         $query = mysqli_query($connection, "SELECT motorcycle_tb.stock as stock FROM motorcycle_tb WHERE id = '".$_POST['motorcycle_id']."'");
         $data = mysqli_fetch_assoc($query);
         $minus1stock = $data['stock']-1;
@@ -15,7 +19,8 @@ if(isset($_GET['buy']))
         $query_2 = 'INSERT INTO customer_tb (name, address, phone, motorcycle_id)
         VALUES ("'.$_POST["name"].'", "'.$_POST["address"].'", "'.$_POST["phone"].'", "'.$_POST["motorcycle_id"].'");';
         $query_2 .= 'UPDATE motorcycle_tb SET stock='.$minus1stock.' WHERE id = '.$_POST['motorcycle_id'].'';
-
+        
+        // Memastikan query berhasil
         if(mysqli_multi_query($connection, $query_2)) {
             echo "<script>alert('Motorcycle successfully purchase'); javascript:location.replace('index.php');</script>";
         } else {
@@ -24,7 +29,6 @@ if(isset($_GET['buy']))
     }
 } else if(isset($_GET['add_product']))
 {
-    
     if(!isset($_POST["name"]) || !isset($_POST["color"]) || !isset($_POST["specification"]) || !isset($_POST["image"]) || !isset($_POST["stock"])){
         echo "<script>alert('Error : Fill The Form Exactly ....'); javascript:location.replace('index.php');</script>";
     }
@@ -75,10 +79,15 @@ if(isset($_GET['buy']))
     <div class="container-fluid mt-2 row">
         <div class="container col-md-9 row" style="padding-left: 5%;">
             <?php
+                // Query untuk menampilkan tabel product motor
                 $query = "SELECT motorcycle_tb.id as id, motorcycle_tb.name as name, motorcycle_tb.image as image, motorcycle_tb.color as color, motorcycle_tb.stock as stock, motorcycle_tb.specification as specification, brand_tb.name as brand_name FROM motorcycle_tb join brand_tb on motorcycle_tb.brand_id = brand_tb.id";
                 $result = mysqli_query($connection, $query);
                 if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_assoc($result)) {
+                    /* Query untuk menampilkan tabel product motor 
+                        Jika stock motor kosong maka tidak bisa di beli
+                        Setiap form pembelian ada hidden value untuk input id motor ke pembelian untuk costumer
+                    */
                     echo '<div class="col-md-4 p-2">
                                 <div class="card">
                                     <img src="'.$row["image"].'" class="card-img-top img-fluid" alt="'.$row["name"].'">
@@ -130,17 +139,17 @@ if(isset($_GET['buy']))
             <ul class="list-group mt-2">
             <li class="list-group-item" style="text-align: center;"><b>Motorcycle Brand</b></li>
                 <?php
+                     // Query untuk menampilkan tabel brand product
                     $query = "SELECT * FROM brand_tb";
                     $result = mysqli_query($connection, $query);
                     if (mysqli_num_rows($result) > 0) {
-                        // output data of each row
                         while($row = mysqli_fetch_assoc($result)) {
-                        $result_2 = mysqli_query($connection, 'SELECT * FROM motorcycle_tb where brand_id='.$row["id"].'');
-                        $total = mysqli_num_rows($result_2);
-                        echo '<li class="list-group-item d-flex justify-content-between align-items-center">'.$row["name"].'  <span class="badge badge-primary badge-pill">'.$total.'</span></li>';
+                            $result_2 = mysqli_query($connection, 'SELECT * FROM motorcycle_tb where brand_id='.$row["id"].'');
+                            $total = mysqli_num_rows($result_2);
+                            echo '<li class="list-group-item d-flex justify-content-between align-items-center">'.$row["name"].'  <span class="badge badge-primary badge-pill">'.$total.'</span></li>';
                         }
                     } else {
-                        echo "0 results";
+                        echo "No results";
                     }
                 ?>
             </ul>
@@ -160,7 +169,7 @@ if(isset($_GET['buy']))
                                 if (mysqli_num_rows($result) > 0)
                                 {
                                     while($row = mysqli_fetch_assoc($result)){
-                                    echo '<option value="'.$row["id"].'">'.$row["name"].'</option>';
+                                        echo '<option value="'.$row["id"].'">'.$row["name"].'</option>';
                                     }
                                 } else {
                                     echo '<option>No Result</option>';
